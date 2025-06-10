@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbershop Geox - Estilo y Tradición</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: #d4af37;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23222" width="1200" height="600"/><circle cx="200" cy="150" r="100" fill="%23333" opacity="0.3"/><circle cx="800" cy="400" r="80" fill="%23444" opacity="0.2"/><rect x="100" y="200" width="200" height="150" fill="%23d4af37" opacity="0.1"/></svg>');
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 3px;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #1a1a1a;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Section Styles */
+        .section-dark {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .section-light {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #333;
+            padding: 80px 0;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #d4af37;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #d4af37;
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+            display: flex; /* Added for button positioning */
+            flex-direction: column; /* Added for button positioning */
+            justify-content: space-between; /* Added for button positioning */
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            border-color: #d4af37;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #d4af37;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            flex-grow: 1; /* Added to push button to bottom */
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 1.5rem; /* Added spacing for the new button */
+        }
+
+        .gallery-button {
+            display: inline-block;
+            background: #d4af37;
+            color: #1a1a1a;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-top: 15px; /* Spacing from price */
+        }
+
+        .gallery-button:hover {
+            background: #f4d03f;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: #d4af37;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-card p {
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 2px solid #d4af37;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Add padding to sections to account for fixed header */
+        section {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="../BARBEN/LOGO/𝐁𝐎̵̴̴̳̳̳̻̻̿̿̾̾𝐃̽̈́ͅͅ𝐘𝐌͍̈́̽̈́̈́̽𝐈𝐂̼̼̈́̽͌̾̈́ͅ𝐀𝐄̼̾̾̓𝐋 𝐋𝐀̯̯̯̯͊͊ۖۖۖ𝐆 ̷͕͕͕͕𝐁𝐔𝐆̷̷̪̪̪̪🔥ۖۖۖۖۖۖۖۖۖۖ.jpg" alt="JHEO Logo" class="logo-img">
+                Barbershop Geox
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Barbershop Geox</h1>
+            <p>Donde el estilo se encuentra con la tradición</p>
+            <a href="https://wa.me/qr/37L24Q6AIYXUP1" class="cta-button">Reservar Cita</a>
+        </div>
+    </section>
+
+    <section id="servicios" class="section-dark">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3>Corte Clásico</h3>
+                    <p>Cortes tradicionales ejecutados con precisión y estilo. Perfecto para el caballero moderno que
+                        aprecia la elegancia atemporal.</p>
+                    <div class="price">$250</div>
+                    <a href="../BARBEN/GALERIA DE SERVICIOS/Corte Clásico/cortes clasicos.html" class="gallery-button">Ver Galería</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🪒</div>
+                    <h3>Afeitado</h3>
+                    <p>Afeitado tradicional con navaja caliente, toallas aromáticas y productos de primera calidad para
+                        una experiencia única.</p>
+                    <div class="price">$180</div>
+                    <a href="../BARBEN/GALERIA DE SERVICIOS/Afeitado/Afeitados.html" class="gallery-button">Ver Galería</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💈</div>
+                    <h3>Corte + Barba</h3>
+                    <p>Servicio completo que incluye corte personalizado y arreglo de barba. El paquete perfecto para el
+                        hombre distinguido.</p>
+                    <div class="price">$350</div>
+                    <a href="../BARBEN/GALERIA DE SERVICIOS/Corte + Barba/Corte + Barba.html" class="gallery-button">Ver Galería</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3>Desvanecidos</h3>
+                    <p>Degradado moderno y limpio que se adapta a todos los estilos. Precisión y frescura en cada detalle para un look impecable.
+                    </p>
+                    <div class="price">$200</div>
+                    <a href="../BARBEN/GALERIA DE SERVICIOS/Desvanecido/Desvanecido.html" class="gallery-button">Ver Galería</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👶🏻</div>
+                    <h3>Corte Infantil</h3>
+                    <p>Cortes especialmente diseñados para los más pequeños en un ambiente divertido y acogedor.</p>
+                    <div class="price">$150</div>
+                    <a href="../BARBEN/GALERIA DE SERVICIOS/Corte Infantil/conter infantil.html" class="gallery-button">Ver Galería</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🧴</div>
+                    <h3>Ritual de Toallas Calientes</h3>
+                    <p>Una experiencia clásica que relaja, suaviza y prepara la piel para un afeitado perfecto. Ideal para quienes buscan confort y cuidado en cada detalle.</p>
+                    <div class="price">$150</div>
+                    <a href="../BARBEN/GALERIA DE SERVICIOS/Ritual de Toallas Calientes/Ritual de Toallas Calientes.html" class="gallery-button">Ver Galería</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🪒</div>
+                    <h3>Afeitado Exprés</h3>
+                    <p>Un afeitado rápido, preciso y refrescante para quienes valoran el tiempo sin renunciar al estilo y el cuidado personal.</p>
+                    <div class="price">$150</div>
+                    <a href="../BARBEN/GALERIA DE SERVICIOS/Afeitado expres/Afeitado expres.html" class="gallery-button">Ver Galería</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section-dark">
+        <div class="container">
+            <h2>Contacto e Información</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Ubicación</h3>
+                    <p>Prol. Caminero # 30<br>Col Valle de Zacatlan<br>San Cristobal De Las Casas, Chis.</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Teléfono</h3>
+                    <p>+52 967 345 4719</p>
+                    <p>WhatsApp: +52 967 345 4719</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">🕒</div>
+                    <h3>Horarios</h3>
+                    <p>Lunes a Viernes: 00:00 - 00:00<br>Sábados: 00:00 - 00:00<br>Domingos: 00:00 - 00:00</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💳</div>
+                    <h3>Formas de Pago</h3>
+                    <p>Efectivo, Tarjetas de Crédito<br>Débito, Transferencias<br>PayPal, Mercado Pago</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Barbershop Geox. Todos los derechos reservados.</p>
+            <p>Síguenos en nuestras redes sociales</p>
+            <div class="social-links">
+                <a href="#">📘</a>
+                <a href="#">📷</a>
+                <a href="#">🐦</a>
+                <a href="#">💼</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
